@@ -1,0 +1,24 @@
+﻿@using TestWeb.Models
+@model IEnumerable<Movie>
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">CinemaId</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Starring</th>
+                    <th scope="col">Release</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @Html.DisplayForModel()
+            </tbody>
+        </table>
+        <a asp-action="Add" asp-route-cinemaId="@ViewBag.CinemaId">添加</a>
+        @await Component.InvokeAsync("MovieCount", new { cinemaId=ViewBag.CinemaId})
+        <vc:movie-count cinema-id="@ViewBag.CinemaId"></vc:movie-count>
+    </div>
+</div>

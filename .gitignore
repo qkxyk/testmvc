@@ -1,0 +1,6 @@
+TestWeb/bin
+TestWeb/obj
+node_modules
+TestWeb.Models/bin
+TestWeb.Models/obj
+.vs

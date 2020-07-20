@@ -1,0 +1,44 @@
+﻿@using TestWeb.Models
+@using TestWeb.setting
+@using Microsoft.Extensions.Options
+@model IEnumerable<Cinema>
+
+@inject IOptions<ConnectionOptions> options;
+
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Capacity</th>
+                    <th>@options.Value.DefaultConnection</th>
+                </tr>
+            </thead>
+            <tbody>
+                @Html.DisplayForModel()
+
+            </tbody>
+        </table>
+        <a asp-action="Add">添加</a>
+
+        @await Component.InvokeAsync("MovieCount", new { cinemaId = 1 });
+        <br />
+        @*<form action="Load">
+            <label for="file">上传文件</label>
+            <input type="file" name="file" />
+            <input type="submit" value="上传文件" />
+        </form>*@
+    </div>
+    <div class="row">
+        <form asp-controller="Home" asp-action="Load" method="post" enctype="multipart/form-data">
+            <label for="file">上传文件</label>
+            <input type="file"  name="file" />
+            <button class="btn btn-primary">测试上传文件</button>
+            <input type="submit"  value="上传文件"/>
+        </form>
+    </div>
+</div>
+
